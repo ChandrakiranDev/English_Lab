@@ -1,0 +1,387 @@
+CURSOR BUILD SPECIFICATION
+Project / Dashboard Name: English Lab
+Suggested folder name: english-lab
+Suggested dashboard title: English Lab — Your Personal English Practice Workspace
+
+PURPOSE
+Build a complete, polished, personal English-learning dashboard for an intermediate learner who wants to improve:
+- Natural listening comprehension, including fast speech and different English accents
+- Speaking fluency, confidence, and the ability to keep a conversation going
+- Vocabulary, collocations, idioms, and natural sentence formation
+- Professional communication with colleagues, managers, HR, clients, and project stakeholders
+- Software-project and enterprise communication vocabulary, WITHOUT teaching programming languages, frameworks, or coding
+
+This is a personal learning workspace, not a beginner English course, generic LMS, coding course, or social platform. The learner is Telugu-native and may benefit from optional Telugu meanings for difficult expressions, but the main learning experience should be in English. Content should target intermediate-to-advanced practical usage rather than basic grammar lessons.
+
+IMPORTANT WORKING INSTRUCTIONS FOR CURSOR
+1. Inspect the existing repository and identify its current framework, package manager, conventions, and available components before making changes.
+2. Reuse the existing stack and architecture if this is an existing project. Do not replace the stack or rewrite unrelated code.
+3. If the repository is empty, select a simple, maintainable web stack appropriate to the environment and explain the choice briefly before implementing.
+4. Build a functional application, not just a static mockup or screenshot. All navigation, forms, filters, progress controls, and save actions must work.
+5. Do not require paid services, API keys, authentication providers, or external databases for the first version. The application should work locally out of the box.
+6. Persist personal learning data locally using the most suitable storage for the current stack (prefer IndexedDB for structured client-side data, or localStorage for a deliberately simple implementation). Encapsulate storage behind a service so it can be replaced later.
+7. Never claim that an activity was completed or mastered without the learner explicitly recording a result. Distinguish “opened”, “in progress”, “completed”, and “mastered”.
+8. Do not invent or include real company-confidential project details. Use generic enterprise/software-project scenarios.
+9. Do not create features for payments, public profiles, social feeds, leaderboards, or multi-user administration.
+10. Implement in coherent phases, but deliver a working end-to-end first version. If a feature cannot be implemented reliably, label it clearly as a planned feature rather than presenting a fake working control.
+11. Add a README with setup/run instructions, the architecture summary, local data-storage behavior, and known limitations.
+12. Keep the UI accessible: semantic HTML, keyboard support, visible focus states, readable contrast, labels for inputs, and responsive layouts.
+
+PRODUCT PRINCIPLES
+The dashboard should always help the learner answer:
+- What should I practise today?
+- How should I practise it?
+- What did I learn?
+- Can I use it independently in a new situation?
+- What should I review or improve next?
+
+Prioritize three capabilities:
+A. Resume the learner's last unfinished activity.
+B. Save a vocabulary item or expression from any lesson in one quick action and associate it with its lesson.
+C. Track demonstrated ability and recurring errors, not merely the number of lessons opened.
+
+VISUAL DIRECTION
+Create a calm, focused, premium-feeling learning workspace. It should feel like a modern productivity tool rather than a school portal.
+- Use a clean sidebar on desktop and a suitable mobile navigation pattern.
+- Use a clear page hierarchy, generous spacing, restrained borders, and consistent typography.
+- Use a neutral/light theme by default. Use one restrained accent color for primary actions and progress; avoid excessive gradients, neon colors, and too many decorative cards.
+- Use cards only when they improve scanning. Do not make every line of content a card.
+- Use clear status labels and progress indicators without overwhelming the learner.
+- Include helpful empty states, loading states when relevant, and confirmation or error feedback.
+- Use responsive layouts for desktop, tablet, and mobile.
+- Avoid fake analytics, decorative charts without meaning, and placeholder buttons.
+- Use a simple, consistent icon set if already available in the project. Do not add a large dependency for a few icons.
+
+INFORMATION ARCHITECTURE / MAIN NAVIGATION
+Create these primary sections:
+
+1. Home
+2. Learning Path
+3. Practice Room
+4. My Library
+5. Progress & Review
+6. AI Learning Assistant (prepare the interface and useful non-AI fallback tools; do not pretend an AI API is connected if it is not)
+
+GLOBAL HEADER
+- Product name / logo: English Lab
+- Current section/page title
+- Search entry point for lessons, vocabulary, and saved expressions
+- Quick action: “Save a phrase”
+- Learner menu/settings only if useful; no sign-in requirement for the local-first version
+
+PAGE 1 — HOME / DAILY DASHBOARD
+Purpose: give the learner one clear next action, not a wall of metrics.
+
+Include:
+- Greeting such as “Ready for today’s practice?”
+- “Today’s plan” with a configurable daily target and a sensible default of 90 minutes. The learner must be able to change the target; do not force a three-hour schedule.
+- A short sequence of recommended sessions:
+  1. Review vocabulary and expressions — 15 minutes
+  2. Listening and shadowing — 25 minutes
+  3. Speaking practice — 25 minutes
+  4. Sentence improvement — 15 minutes
+  5. Professional communication — 10 minutes
+  This is a suggested plan, not a mandatory timer. Let the learner start, skip, or mark an activity complete.
+- “Continue where you left off” with the last unfinished lesson/activity and a direct Continue action.
+- Current learning stage and current chapter.
+- “Due for review” preview showing vocabulary/expression items due now.
+- Weekly overview with meaningful indicators: practice sessions recorded, speaking attempts, listening sessions, and items successfully recalled. Avoid suggesting that time spent alone equals proficiency.
+- A brief daily focus or objective, for example: “Practise clarifying a requirement without sounding abrupt.”
+- Quick actions: Start practice, Review vocabulary, Save a phrase, Record a reflection.
+- If no history exists, show a useful first-run state with a Start learning button and explain the first recommended step.
+
+PAGE 2 — LEARNING PATH / CURRICULUM
+Create a structured curriculum with stages, weeks/chapters, objectives, lessons, resources, and practice tasks. Users should be able to open a chapter, see its status, and resume it.
+
+Use these four stages:
+
+STAGE 1: NATURAL ENGLISH & FLUENCY
+Goal: express thoughts clearly, understand everyday natural speech, and form complete, natural sentences.
+Suggested chapters:
+- Expressing opinions, preferences, and reasons
+- Keeping a conversation going
+- Asking follow-up questions
+- Paraphrasing when a word is missing
+- Understanding connected speech and reduced sounds
+- Speaking without translating every sentence mentally
+
+STAGE 2: VOCABULARY & NATURAL EXPRESSIONS
+Goal: learn useful words in context, collocations, phrasal verbs, idiomatic expressions, and register.
+Suggested chapters:
+- Vocabulary in context and collocations
+- Common phrasal verbs used in work and everyday speech
+- Formal, neutral, and informal expressions
+- Clarifying meaning and checking understanding
+- Replacing vague wording with precise wording
+- Reviewing and using expressions independently
+
+STAGE 3: PROFESSIONAL & SOFTWARE-PROJECT COMMUNICATION
+Goal: communicate effectively about work and enterprise projects. This is language practice only; do not teach coding or technical implementation.
+Suggested chapters:
+- Introducing your role and explaining your work
+- Requirements, scope, deliverables, and acceptance criteria
+- Dependencies, milestones, deadlines, and priorities
+- Status updates, progress, risks, and blockers
+- Clarifying ambiguous requirements
+- Explaining a delay and proposing a recovery plan
+- Discussing trade-offs and alternatives
+- Decisions, action items, ownership, and follow-up
+- Escalating an issue professionally
+- Communicating with clients and stakeholders
+
+STAGE 4: MEETINGS, NEGOTIATION & INDEPENDENT PERFORMANCE
+Goal: handle realistic professional conversations with confidence.
+Suggested chapters:
+- Starting and contributing to meetings
+- Agreeing, disagreeing, and challenging an idea respectfully
+- Asking someone to repeat or explain something
+- Handling unexpected questions and pauses
+- Giving and receiving feedback
+- Managing misunderstandings
+- Presenting a proposal or recommendation
+- Negotiating scope, timelines, and priorities
+- Full client-meeting simulation
+- Final review and personal improvement plan
+
+Curriculum behavior:
+- Show stage, chapter, objective, estimated duration, status, and prerequisites when applicable.
+- Allow search and filtering by stage, status, skill (listening, speaking, vocabulary, sentence formation, professional communication), and difficulty.
+- Use a sensible progression but let the learner revisit completed chapters.
+- Clearly distinguish included sample content from a fully authored course. Provide a useful starter curriculum and sample activities rather than hundreds of empty lesson rows.
+- Do not mark a chapter complete just because the user opened it.
+- Let the learner record an outcome and confidence rating after an activity.
+
+PAGE 3 — CHAPTER / LESSON DETAIL
+Each chapter detail page should include:
+- Chapter title and concise learning objective
+- Why this skill matters
+- Key expressions and vocabulary in context
+- Definitions in clear English; optional Telugu meaning field where helpful
+- Natural example sentences relevant to everyday or professional situations
+- Common mistakes and more natural alternatives
+- A listening task with a source link when a reliable public resource URL is available. Do not fabricate URLs. If a URL is not verified, show a clearly editable “Add resource link” field or leave it blank.
+- A speaking prompt or role-play scenario
+- A sentence-formation or rewrite exercise
+- A “Use it in a new situation” transfer task
+- Buttons: Start practice, Save phrase, Add personal note, Mark activity result
+- Related saved vocabulary and prior corrections
+- Chapter status: Not started, In progress, Completed, or Mastered
+- Explicit completion criteria that are based on evidence, not just page views
+
+PAGE 4 — PRACTICE ROOM
+This is the core interactive practice experience. It should support different activity types:
+- Listening / shadowing
+- Speaking prompt / role-play
+- Vocabulary recall
+- Sentence improvement
+- Professional scenario simulation
+- Review of recurring mistakes
+
+Practice flow:
+1. Show one clear task and its goal.
+2. Let the learner attempt it without showing the answer first when recall is the point.
+3. Reveal model answers, useful expressions, or feedback after the attempt.
+4. Let the learner compare their response with the model.
+5. Provide an optional self-rating: Easy / Manageable / Difficult.
+6. Record the result and schedule review if needed.
+7. Offer a related follow-up task or return to the chapter.
+
+Functional requirements:
+- For text exercises, provide a response field and a model answer/feedback reveal.
+- For role-play, show a scenario, the other person's role, the learner's goal, and optional prompts. Include scenarios for colleague, manager, HR, client, and stakeholder conversations.
+- For listening, provide a resource link or a text-based alternative. Do not claim the browser is listening to the learner unless actual audio recording/transcription has been implemented and permission has been granted.
+- If audio recording is implemented, request permission clearly, provide record/stop/playback/delete controls, and keep recordings local by default. If not implemented, offer a practical text/voice-memo alternative without pretending recording works.
+- Do not claim to automatically grade pronunciation or speaking quality without a real supported mechanism. Allow self-assessment and optional notes.
+- Provide a “Try again” action and preserve prior attempts if reasonable.
+
+PAGE 5 — MY LIBRARY
+A personal searchable knowledge base that works across lessons.
+
+Include categories/tabs or filters for:
+- Vocabulary
+- Expressions and collocations
+- Phrasal verbs / idioms
+- Professional phrases
+- My sentence corrections
+- Difficult-to-understand phrases
+- Personal notes
+
+Each saved item should support:
+- Word or phrase
+- Meaning in clear English
+- Optional Telugu meaning
+- Example sentence
+- Context/category
+- Register (formal, neutral, informal) where relevant
+- Source chapter or activity
+- Personal example
+- Tags
+- Confidence / recall status
+- Date added and next review date
+- Edit, delete, search, filter, and mark as recalled actions
+
+Quick-save behavior:
+- From any lesson or practice task, “Save phrase” should open a small, fast form or popover.
+- Automatically associate the phrase with the current chapter when possible.
+- Let the learner save a phrase with only the phrase itself and fill other fields later.
+- Avoid duplicate entries where practical; if a similar item exists, offer to open/edit it.
+
+PAGE 6 — PROGRESS & REVIEW
+Track meaningful evidence over time without making exaggerated claims about language proficiency.
+
+Include:
+- Activity history with date, chapter, skill, attempt/result, and reflection
+- Weekly practice consistency
+- Vocabulary recall rate based on recorded review attempts
+- Number of speaking attempts and role-play attempts
+- Listening activities completed
+- Recurring sentence or vocabulary mistakes
+- Confidence trend based on the learner’s own ratings
+- Chapters completed vs mastered, with clear definitions
+- A weekly reflection form:
+  - What became easier?
+  - Which expressions did I use independently?
+  - What still feels difficult?
+  - What should I practise next week?
+- Review queue with due/overdue items and quick recall controls
+- Filters by date range, skill, stage, and result
+- Export personal learning data to JSON or CSV if practical; provide a safe import/restore path if feasible
+- Reset data only behind a clear confirmation step
+
+Review logic:
+- Use a simple transparent schedule such as 1 day, 3 days, 7 days, and 14 days based on the learner’s recall rating. Document the rule and allow manual rescheduling.
+- If the learner marks an item “Forgot”, schedule it sooner. If “Recalled easily”, schedule it later.
+- Do not label someone fluent or proficient based on counts alone.
+
+PAGE 7 — AI LEARNING ASSISTANT
+Prepare a dedicated workspace that can help the learner practise, but never pretend a live model is connected when it is not.
+
+Useful modes:
+- Explain a word or expression in clear English
+- Give optional Telugu meaning
+- Improve a sentence while preserving its intended meaning
+- Explain why a revised sentence sounds more natural or professional
+- Simulate a client/manager/colleague conversation
+- Ask follow-up questions and wait for the learner’s response
+- Create an intermediate-level listening or speaking challenge
+- Practise a professional status update or meeting contribution
+- Review recurring mistakes from saved examples
+- Generate a short review quiz from saved vocabulary
+
+If no AI provider/API is configured:
+- Build a useful interface with prompt templates the learner can copy.
+- Include a clearly labelled “Copy prompt” action and explain that the learner can paste it into an AI chat.
+- Do not show fake generated answers or a fake “AI is thinking” animation.
+- Keep API integration modular and optional for a later phase.
+- Do not send personal learning data to external services automatically.
+
+SETTINGS / PERSONALIZATION
+Include simple settings for:
+- Preferred daily practice target
+- Optional Telugu meanings on/off
+- Default difficulty: Intermediate (default), Upper-intermediate, Advanced
+- Reminder preference as a local in-app preference only; do not claim to send notifications unless implemented
+- Export data / import data / reset data
+- Theme only if it is straightforward and consistent with the current app
+
+DATA MODEL
+Design a clear, maintainable data model. Adapt to the existing stack, but consider entities such as:
+- Stage: id, title, description, order
+- Chapter: id, stageId, title, objective, skills, difficulty, estimatedMinutes, prerequisites, resourceLinks, content, order
+- Activity: id, chapterId, type, title, prompt, instructions, modelAnswer, criteria, order
+- ActivityAttempt: id, activityId, date, response, selfRating, outcome, notes
+- VocabularyItem: id, phrase, definition, teluguMeaning, example, personalExample, category, register, tags, chapterId, sourceActivityId, confidence, createdAt, updatedAt, nextReviewAt, reviewHistory
+- SentenceCorrection: id, originalText, revisedText, explanation, context, chapterId, createdAt
+- LearningSession: id, date, plannedMinutes, actualMinutes, activitiesCompleted, reflection
+- WeeklyReflection: id, weekStartDate, easierNow, independentExpressions, difficulties, nextFocus
+- UserSettings: dailyTargetMinutes, showTeluguMeanings, difficulty, theme
+Use stable IDs and validate inputs. Avoid storing derived statistics as the only source of truth; calculate them from history where reasonable.
+
+CONTENT AND LANGUAGE QUALITY
+- Keep examples realistic, natural, and suitable for an adult professional.
+- Avoid beginner-only content such as the alphabet, very basic greetings, or isolated elementary grammar drills.
+- Explain difficult concepts in plain English, with optional Telugu support.
+- Focus on how people actually speak: natural phrasing, tone, clarification, turn-taking, paraphrasing, and professional register.
+- Include examples of both natural spoken English and polished workplace English.
+- For workplace scenarios, use generic fictional examples. Never require company-specific internal information.
+- Distinguish American/British usage where relevant, but do not overcomplicate every lesson.
+- Every lesson should include an opportunity to produce language, not just read definitions.
+- Include sample starter content for at least:
+  1. Clarifying an ambiguous requirement
+  2. Giving a concise project status update
+  3. Explaining a blocker and proposing a next step
+  4. Disagreeing respectfully in a meeting
+  5. Asking a client to clarify acceptance criteria
+  6. Describing a deadline or dependency
+  7. Paraphrasing when the learner does not know a word
+  8. Keeping a natural conversation going
+- Do not turn these topics into programming lessons.
+
+SEARCH
+Implement a global search that can find:
+- Chapter and activity titles
+- Vocabulary and expressions
+- Saved corrections and notes
+Search results should show the item type and allow opening the relevant record.
+
+ACCESSIBILITY AND UX DETAILS
+- Every interactive element must have a meaningful action.
+- Add keyboard-accessible navigation and controls.
+- Provide visible focus styles and accessible labels.
+- Do not rely on color alone to communicate status.
+- Keep forms short and support saving partial entries where practical.
+- Show useful empty states and helpful validation errors.
+- Confirm destructive actions.
+- Keep page loading and transitions quick; avoid unnecessary animations.
+
+IMPLEMENTATION PLAN
+Phase 1 — Working foundation:
+- Inspect repo and current stack.
+- Create the responsive application shell, navigation, Home, Learning Path, chapter detail, and Practice Room.
+- Add sample curriculum and working local persistence.
+- Implement resume-last-activity and explicit progress status.
+
+Phase 2 — Personal library:
+- Add vocabulary/expression saving from lessons and practice.
+- Add search, filters, edit/delete, chapter association, and notes.
+- Add sentence-correction storage.
+
+Phase 3 — Review and progress:
+- Add review scheduling, activity history, weekly reflection, and honest progress summaries.
+- Add export/import if feasible.
+
+Phase 4 — Assistant and polish:
+- Add AI prompt templates and copy actions.
+- Improve accessibility, responsive design, empty states, error handling, and documentation.
+- Run available lint, type checks, tests, and production build. Fix errors introduced by the work.
+
+ACCEPTANCE CRITERIA
+The implementation is not complete until all of the following work:
+1. The app starts using documented commands.
+2. All main navigation items open real pages.
+3. Home shows a useful first-run state and resumes an unfinished activity after data exists.
+4. Curriculum stages and chapters can be browsed, searched, and filtered.
+5. A learner can open a chapter, attempt an activity, record a result, and see the saved status after refreshing.
+6. Opening a chapter alone does not mark it complete or mastered.
+7. A phrase can be saved from a lesson in one quick action and appears in My Library with its source chapter.
+8. Library items can be searched, edited, deleted, and reviewed.
+9. Review outcomes update the next review date according to the documented rule.
+10. Progress summaries derive from recorded activity and do not fabricate results.
+11. Settings persist after refresh.
+12. Export/import or its limitation is documented.
+13. No button is decorative or silently non-functional.
+14. No API keys or paid services are required for the basic application.
+15. The UI is responsive and keyboard-usable.
+16. README documents setup, architecture, persistence, and limitations.
+17. No unrelated files or existing functionality are removed or rewritten without need.
+
+FINAL DELIVERY
+When finished, provide a concise implementation summary:
+- What was built
+- Main routes/pages
+- How data is saved
+- How to run the project
+- Checks/tests run and their results
+- Known limitations and any planned integrations
+
+Start by inspecting the repository, then implement the application in the existing stack. Prioritize a cohesive, working experience over excessive feature count or decorative complexity.
