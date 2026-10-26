@@ -1,14 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { NAV_ITEMS, titleForPath } from "../content/routes";
+import { weekdayFromKey } from "../storage/plan";
 import { useAppState } from "../state/AppState";
 
 export function AppShell() {
   const location = useLocation();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { persistError } = useAppState();
+  const { persistError, dailyTargetMinutes, todayKey } = useAppState();
   const sectionTitle = titleForPath(location.pathname);
+  const isHome = location.pathname === "/";
+  const targetLabel = `${weekdayFromKey(todayKey)} · ${dailyTargetMinutes}-minute target`;
 
   useEffect(() => {
     document.title = `${sectionTitle} · English Lab`;
@@ -34,7 +37,7 @@ export function AppShell() {
       <aside className="sidebar">
         <Brand />
         <Navigation />
-        <p className="sidebar-note">Step 1 of 6. This version is Home. The other sections come next.</p>
+        <p className="sidebar-note">Your practice is saved on this device.</p>
       </aside>
       <div className="workspace">
         <header className="topbar">
@@ -47,7 +50,12 @@ export function AppShell() {
           >
             Menu
           </button>
-          <p className="section-label">{sectionTitle}</p>
+          {isHome ? (
+            <p className="section-label">{targetLabel}</p>
+          ) : (
+            <p className="section-label">{sectionTitle}</p>
+          )}
+          {isHome ? null : <p className="topbar-meta">{targetLabel}</p>}
         </header>
         {persistError ? (
           <p className="banner" role="alert">
@@ -72,6 +80,7 @@ export function AppShell() {
           </button>
         </div>
         <Navigation onNavigate={closeMenu} />
+        <p className="sidebar-note">Your practice is saved on this device.</p>
       </dialog>
     </div>
   );

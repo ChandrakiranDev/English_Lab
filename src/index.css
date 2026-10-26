@@ -153,6 +153,12 @@ a:hover { text-decoration-thickness: 2px; }
   z-index: 2;
 }
 
+.topbar-meta {
+  margin: 0 0 0 auto;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
 .section-label {
   margin: 0;
   font-size: 0.95rem;
@@ -191,13 +197,21 @@ h2 { margin: 0 0 0.45rem; font-size: 1.55rem; }
 
 h3 { margin: 0; font-size: 1.15rem; }
 
-.lede, .block-heading p, .plan-meta, .field-hint, .stats p, .sidebar-note {
+.lede, .block-heading p, .plan-meta, .field-hint, .sidebar-note {
   color: var(--ink-soft);
 }
 
-.lede { margin: 0 0 1.5rem; font-size: 1.08rem; }
+.lede { margin: 0 0 0.8rem; font-size: 1.08rem; }
 
-.callout, .block, .stats article {
+.focus-line { margin: 0 0 1.25rem; }
+
+.first-run {
+  margin: 0 0 1.25rem;
+  padding: 0.15rem 0 0.15rem 0.85rem;
+  border-left: 3px solid var(--accent);
+}
+
+.callout, .block {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 1rem;
@@ -206,6 +220,10 @@ h3 { margin: 0; font-size: 1.15rem; }
 .callout, .block { padding: 1.15rem 1.2rem 1.25rem; margin-bottom: 1rem; }
 
 .callout { box-shadow: var(--shadow); }
+
+.next-step h2 { font-size: 1.7rem; }
+
+.next-step p { margin: 0 0 0.9rem; }
 
 .block-heading { margin-bottom: 1rem; }
 
@@ -222,6 +240,7 @@ input[type="text"],
 input:not([type]),
 #daily-target {
   width: 7rem;
+  min-height: 44px;
   border: 1px solid #cfc6b8;
   background: white;
   border-radius: 0.7rem;
@@ -234,7 +253,8 @@ button, .text-button {
   background: white;
   color: var(--ink);
   border-radius: 999px;
-  padding: 0.5rem 0.9rem;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
   cursor: pointer;
 }
 
@@ -244,7 +264,22 @@ button.primary {
   color: white;
 }
 
+button.quiet {
+  border-color: transparent;
+  background: transparent;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 button:hover { border-color: var(--accent); }
+
+button.quiet:hover { border-color: transparent; color: var(--ink); }
+
+button.primary:hover {
+  border-color: var(--accent-strong);
+  background: var(--accent-strong);
+}
 
 .menu-button {
   border-radius: 0.7rem;
@@ -257,10 +292,11 @@ button:hover { border-color: var(--accent); }
 .field-ok { color: var(--accent-strong); }
 
 .live-note {
-  min-height: 1.4rem;
   margin: 0.8rem 0;
   color: var(--accent-strong);
 }
+
+.live-note:empty { margin: 0; }
 
 .plan-list {
   list-style: none;
@@ -272,9 +308,14 @@ button:hover { border-color: var(--accent); }
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.95rem 0;
+  padding: 0.95rem 0.6rem;
   border-top: 1px solid var(--line);
-  align-items: flex-start;
+  align-items: center;
+}
+
+.plan-item.status-in_progress {
+  background: var(--accent-soft);
+  border-radius: 0.75rem;
 }
 
 .plan-index {
@@ -300,25 +341,13 @@ button:hover { border-color: var(--accent); }
   justify-content: flex-end;
 }
 
-.facts { margin: 0; }
-.facts div { padding: 0.75rem 0; border-top: 1px solid var(--line); }
-.facts dt { font-weight: 700; }
-.facts dd { margin: 0.2rem 0 0; color: var(--ink-soft); }
+.quiet-section { margin-top: 1.6rem; }
 
-.stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
+.quiet-section h2 { font-size: 1.35rem; }
 
-.stats article { padding: 0.95rem 1rem 1rem; margin: 0; }
-.stat-value {
-  margin: 0.35rem 0;
-  font-family: var(--serif);
-  font-size: 2rem;
-  color: var(--ink);
-  line-height: 1;
-}
+.quiet-section p { margin: 0.45rem 0 0; }
+
+.quiet-section strong { font-weight: 700; }
 
 .plain-list { margin: 0 0 1rem; padding-left: 1.2rem; }
 .plain-list li + li { margin-top: 0.35rem; }
@@ -356,9 +385,10 @@ button:hover { border-color: var(--accent); }
   .menu-button { display: inline-flex; }
   .content { padding: 1.25rem 1rem 3rem; }
   .topbar { padding-inline: 1rem; }
-  .plan-item { flex-direction: column; }
+  .plan-item { flex-direction: column; align-items: flex-start; }
   .plan-actions { justify-content: flex-start; }
-  .stats { grid-template-columns: 1fr; }
+  .topbar { flex-wrap: wrap; }
+  .topbar-meta { margin-left: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

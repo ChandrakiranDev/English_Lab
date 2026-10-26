@@ -188,6 +188,17 @@ export function parseDailyTarget(
   return { ok: true, minutes };
 }
 
+export function completedMinutes(items: PlanItem[]): number {
+  return items.reduce((total, item) => (item.status === "completed" ? total + item.minutes : total), 0);
+}
+
+export function weekdayFromKey(dateKey: string): string {
+  const [year, month, day] = dateKey.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-IN", { weekday: "long" }).format(
+    new Date(year, (month ?? 1) - 1, day ?? 1),
+  );
+}
+
 export function statusLabel(status: ItemStatus): string {
   switch (status) {
     case "not_started":
